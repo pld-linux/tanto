@@ -1,0 +1,3 @@
+MAILTO=root
+
+#* * * * * root /usr/bin/tanto > /dev/null 2>&1

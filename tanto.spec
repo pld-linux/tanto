@@ -6,6 +6,7 @@ License:	AGPL v3
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/t/tanto/%{name}-%{version}.tar.gz
 # Source0-md5:	480a1549803eb96cf221847ac10c6d3b
+Source1:	%{name}.crontab
 URL:		https://github.com/Eyepea/tanto
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
@@ -47,6 +48,9 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/cron.d}
 # https://wiki.python.org/moin/Distutils/Proposals/AutoconfLikeOptions
 mv $RPM_BUILD_ROOT{%{_prefix}%{_sysconfdir}/%{name}/*,%{_sysconfdir}/%{name}}
 mv $RPM_BUILD_ROOT{%{_prefix}/etc/cron.d/*,/etc/cron.d}
+
+# install our crontab definition
+install -p %{SOURCE1} $RPM_BUILD_ROOT/etc/cron.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
